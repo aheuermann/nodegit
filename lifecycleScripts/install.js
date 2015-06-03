@@ -26,7 +26,7 @@ return whichNativeNodish("..")
       return checkAndBuild();
     }
     else if (asVersion) {
-      console.info("[nodegit] Must build for atom-shell");
+      console.info("[nodegit] Must build for electron");
       return checkAndBuild();
     }
     if (fs.existsSync(local("../.didntcomefromthenpmregistry"))) {
@@ -98,13 +98,12 @@ function build() {
 
   if (asVersion) {
     prefix = (process.platform == "win32" ?
-      "SET HOME=%HOME%\\.atom-shell-gyp&& " :
-      "HOME=~/.atom-shell-gyp");
+      "SET HOME=%HOME%\\.electron-gyp&& " :
+      "HOME=~/.electron-gyp");
 
     target = "--target=" + asVersion;
 
-    distUrl = "--dist-url=https://gh-contractor-zcbenz.s3." +
-      "amazonaws.com/atom-shell/dist";
+    distUrl = "--dist-url=https://atom.io/download/atom-shell";
   }
   else if (nwVersion) {
     builder = "nw-gyp";

@@ -17,8 +17,8 @@ var local = path.join.bind(path, __dirname);
 
 return whichNativeNodish("..")
   .then(function(results) {
-    nwVersion = results.nwVersion;
-    asVersion = results.asVersion;
+    nwVersion = results.nwVersion || process.env.BUILD_NWJS;
+    asVersion = results.asVersion || process.env.BUILD_ELECTRON;
   })
   .then(function() {
     if (nwVersion) {
